@@ -46,3 +46,26 @@ img {
   width: 500px;
   height: 500px;
 }
+
+div.buttons {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: fit-content;
+}
+.circle {
+  border-radius: 50%;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #9ca3af;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.circle.active {
+  background-color: #6b7280;
+}

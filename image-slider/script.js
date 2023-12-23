@@ -10,6 +10,7 @@ function domController() {
   const slider = document.querySelector(".slider");
   const rightArrow = document.querySelector(".arrow.right");
   const leftArrow = document.querySelector(".arrow.left");
+  const circles = document.querySelectorAll(".circle");
   let currentSlide = 0;
 
   slider.appendChild(generateImage());
@@ -19,14 +20,23 @@ function domController() {
   slider.appendChild(generateImage());
   slider.appendChild(generateImage());
 
+  function setTransform() {
+    const translateValue = -500 * currentSlide;
+    slider.style.transform = `translateX(${translateValue}px)`;
+  }
+
   function next() {
     currentSlide++;
     if (currentSlide === 6) {
       currentSlide = 0;
     }
-
-    let translateValue = -500 * currentSlide;
-    slider.style.transform = `translateX(${translateValue}px)`;
+    setTransform();
+    const activeCircle = document.querySelector(".active");
+    activeCircle.classList.remove("active");
+    const currentCircle = document.querySelector(
+      `.circle[data-slide="${currentSlide}"]`
+    );
+    currentCircle.classList.add("active");
   }
 
   rightArrow.addEventListener("click", next);
@@ -37,11 +47,27 @@ function domController() {
       currentSlide = 5;
     }
 
-    let translateValue = -500 * currentSlide;
-    slider.style.transform = `translateX(${translateValue}px)`;
+    setTransform();
+    const activeCircle = document.querySelector(".active");
+    activeCircle.classList.remove("active");
+    const currentCircle = document.querySelector(
+      `[data-slide="${currentSlide}"]`
+    );
+    currentCircle.classList.add("active");
   }
 
   leftArrow.addEventListener("click", prev);
+
+  circles.forEach((circle) => {
+    circle.addEventListener("click", (e) => {
+      const slide = e.target.dataset.slide;
+      currentSlide = slide;
+      setTransform();
+      const activeCircle = document.querySelector(".active");
+      activeCircle.classList.remove("active");
+      circle.classList.add("active");
+    });
+  });
 }
 
 domController();
