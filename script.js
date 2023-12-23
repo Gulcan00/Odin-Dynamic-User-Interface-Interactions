@@ -68,6 +68,8 @@ function domController() {
       circle.classList.add("active");
     });
   });
+
+  setInterval(next, 5000);
 }
 
 domController();
