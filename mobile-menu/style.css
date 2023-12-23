@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+nav {
+    background-color: #360A14;
+    height: 80px;
+    box-sizing: border-box;
+    padding: 16px;
+    padding-bottom: 0px;
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    gap: 30px;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    gap: 4px;
+    min-width: 80px;
+}
+
+.nav-item.active {
+    border-bottom: 6px #44FFD1 double;
+    color: #44FFD1;
+}
